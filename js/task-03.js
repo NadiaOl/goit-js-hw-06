@@ -12,3 +12,21 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
+
+const newEl = document.createElement('li');
+
+const makeLI = ({url, alt}) => `<li class="item">
+<img src="${url}" alt="${alt}" width = "300" height = "180"></li>`;
+
+const listEl = document.querySelector('.gallery');
+listEl.style.display = "grid";
+
+const newMarkup = images.map((image) => makeLI(image)).join('');
+
+listEl.insertAdjacentHTML('afterbegin', newMarkup);
+console.log(newMarkup);
+
+const styleItem = document.querySelectorAll('.item');
+styleItem.forEach((el) => {
+  el.style.listStyle = "none";
+});
