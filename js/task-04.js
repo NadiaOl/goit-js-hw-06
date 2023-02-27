@@ -8,8 +8,7 @@ let counterValue = 0;
 
 decrementBtn.addEventListener('click', () => {
     counterValue = parseInt(spanValue.textContent);
-    spanValue.textContent =
-        (counterValue - 1) > 0 ? counterValue - 1 : 0;
+    spanValue.textContent -= 1;
 }
 );
 

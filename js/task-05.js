@@ -6,7 +6,13 @@
 const inputEl = document.querySelector('#name-input');
 const greetingSpan = document.querySelector('#name-output');
 
+
 inputEl.addEventListener("input", (event) => {
-    greetingSpan.textContent = event.currentTarget.value;
-})
+    greetingSpan.textContent = event.target.value.trim();
+if (event.target.value === '' || event.target.value === ' ') {
+    greetingSpan.textContent = 'Anonymous'
+    }
+    }
+)
+
 

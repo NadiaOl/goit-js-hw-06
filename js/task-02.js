@@ -16,13 +16,28 @@ const ingredients = [
 ];
 
 
-const newEl = document.createElement('li');
+// const newEl = document.createElement('li');
 
-const makeLI = (ingredient) => `<li class="item">${ingredient}</li>`;
+// const makeLI = (ingredient) => `<li class="item">${ingredient}</li>`;
+
+// const listEl = document.querySelector('#ingredients');
+
+// const newMarkup = ingredients.map((ingredient) => makeLI(ingredient)).join('');
+
+// listEl.insertAdjacentHTML('afterbegin', newMarkup);
+
+// console.log(newMarkup);
 
 const listEl = document.querySelector('#ingredients');
 
-const newMarkup = ingredients.map((ingredient) => makeLI(ingredient)).join('');
+const newMarkup = ingredients.map(ingredient => 
+{  const newEl = document.createElement('li');
+newEl.classList.add('item');
+newEl.textContent = ingredient;
+  return newEl;
+}
+)
 
-listEl.insertAdjacentHTML('afterbegin', newMarkup);
 console.log(newMarkup);
+listEl.append(...newMarkup);
+

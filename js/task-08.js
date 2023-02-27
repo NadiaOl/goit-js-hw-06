@@ -19,7 +19,9 @@ form.addEventListener('submit', (event) => {
         password: password.value,
     };
 
-    if (email.value === "" || password.value === "") {window.alert('Будь ласка, заповніть усі поля')
+    if (email.value === "" || password.value === "") {
+        window.alert('Будь ласка, заповніть усі поля');
+        return;
     };
     
     console.log(objectValue);
