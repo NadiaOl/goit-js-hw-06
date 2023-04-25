@@ -2,39 +2,38 @@ function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
-// Напиши скрипт создания и очистки коллекции элементов.
-// Пользователь вводит количество элементов в input и нажимает кнопку Создать,
-// после чего рендерится коллекция.
-// При нажатии на кнопку Очистить, коллекция элементов очищается.
-
-// const inputEl = document.querySelector('#controls > input');
-// const buttonCreate = document.querySelector('button[data-create]');
-// const buttonDestroy = document.querySelector('button[data-destroy]');
-// const boxesEl = document.querySelector('#boxes');
-// console.log(boxesEl);
-
-// buttonCreate.addEventListener('clik', (event) => {
-//   const newBoxes = document.createElement('div');
-//   boxesEl.appendChild(newBoxes);
-//   console.log(boxesEl);
-//  })
+const refs = {
+  inputEl: document.querySelector('input'),
+  buttonCreate: document.querySelector('button[data-create]'),
+  buttonDestroy: document.querySelector('button[data-destroy]'),
+  divBoxes: document.querySelector('#boxes'),
+} 
 
 
+refs.buttonCreate.addEventListener('click', holderCreate);
+refs.buttonDestroy.addEventListener('click', holderDestroy);
 
 
-// const amount = inputEl.addEventListener('input', (event) => {
-//   console.log(inputEl.value);
-// })
-// console.log(amount);
+function holderCreate(event) {
+  let amount = refs.inputEl.value;
+  createBoxes(amount)
+}
 
-// Создай функцию createBoxes(amount), которая принимает один параметр - число. 
-// Функция создает столько < div >, сколько указано в amount и добавляет их в div#boxes.
+function createBoxes(amount) {
+  let width = 30;
+  let height = 30;
+  let array = [];
 
-// Размеры самого первого <div> - 30px на 30px.
-// Каждый элемент после первого, должен быть шире и выше предыдущего на 10px.
-// Все элементы должены иметь случайный цвет фона в формате HEX. 
-// Используй готовую функцию getRandomHexColor для получения цвета.
+  for (let i = 1; i <= amount; i += 1) {
+    let color = getRandomHexColor();
+    array.push(`<div style="border: solid 1px gray; height: ${height += 10}px; width: ${width += 10}px; background-color: ${color};"></div>`)
+  }
 
-// const createBoxes(amount) => {
+  refs.divBoxes.innerHTML = array.join('');
+  
+}
 
-// }
+function holderDestroy(event) {
+  refs.inputEl.value = "";
+  refs.divBoxes.innerHTML = "";
+}
